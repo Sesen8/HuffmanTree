@@ -3,6 +3,7 @@
 //
 
 #include "Data.h"
+#include "Tree.h"
 #include <iostream>
 #include <fstream>
 #include <istream>
@@ -38,32 +39,41 @@ bool Compare(Data val1, Data val2){
 int TableMaker(string file, vector<Data>& TableInfo){
     ifstream input;
     string line;
-    char c;
+    string c;
+    char character;
+    int otherchar = 0;
     map<char,int> myMap;
-    do{
+
 
         if(file.empty()){
             cout << "Could not find file." << endl;
-            continue;
+            return -1;
         }
 
         input.open(file);
         if(!input.is_open()){
             cout << "Could not open file." << endl;
-            continue;
+            return -1;
         }
-    }while(!input.is_open());
+
 
     do {
-        input>>c;
-        if(myMap.count(c) > 0){
-            myMap.at(c)++;
-        }
-        else{
-            myMap.insert(std::pair<char,int>(c,1));
+        //input.get(character);
+        getline(input,c);
+        otherchar++;
+        for(size_t i=0; i<c.size(); i++){
+            char currcharacter = c.at(i);
+            if(myMap.count(currcharacter) > 0){
+                myMap.at(currcharacter)++;
+            }
+            else{
+                myMap.insert(std::pair<char,int>(currcharacter,1));
+            }
         }
 
     } while(!input.eof());
+
+    myMap.insert(std::pair<char,int>('\r',otherchar));
 
 
     for(std::pair<char,int> i: myMap){
@@ -74,7 +84,7 @@ int TableMaker(string file, vector<Data>& TableInfo){
 
     sort(TableInfo.begin(),TableInfo.end(),Compare);
     for(Data x: TableInfo){
-        cout << x.GetFreqeuncy() << " " << x.GetLetter() << endl;
+        cout << "{element: " << x.GetLetter() << ", frequency: " << x.GetFreqeuncy() << "}" << endl;
 
     }
 
