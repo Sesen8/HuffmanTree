@@ -7,18 +7,20 @@
 #ifndef HUFFMAN_SESEN8_DATA_H
 #define HUFFMAN_SESEN8_DATA_H
 
+#include <string>
+using std::string;
 
 class Data {
 private:
     int _freq;
-    char _letter;
+    string _letter;
 public:
 
-    Data(int frequency, char letter);
+    Data(int frequency, string letter);
     int GetFreqeuncy() const;
-    char GetLetter() const;
+    string GetLetter() const;
     void SetFrequency(int frequency);
-    void SetLetter(char letter);
+    void SetLetter(string letter);
 
 };
 

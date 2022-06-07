@@ -4,7 +4,7 @@
 
 #include "Data.h"
 
-Data::Data(int frequency, char letter) {
+Data::Data(int frequency, string letter) {
     _freq = frequency;
     _letter = letter;
 }
@@ -13,7 +13,7 @@ int Data::GetFreqeuncy() const {
     return _freq;
 }
 
-char Data::GetLetter() const {
+string Data::GetLetter() const {
     return _letter;
 }
 
@@ -21,6 +21,6 @@ void Data::SetFrequency(int freqeuncy) {
     _freq = freqeuncy;
 }
 
-void Data::SetLetter(char letter) {
+void Data::SetLetter(string letter) {
     _letter = letter;
 }
