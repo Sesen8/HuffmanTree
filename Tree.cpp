@@ -64,10 +64,10 @@ void Tree::TreeMaker(vector<Node*>& node) {
     }
     _root = node.back();
 
-    for(Node* x: node){
-        cout << x->_freq << " " << x->_info << endl;
-
-    }
+//    for(Node* x: node){
+//        cout << x->_freq << " " << x->_info << endl;
+//
+//    }
 
 
 }
@@ -77,7 +77,7 @@ void Tree::TreeTable(vector<Encoding> &encodingTable) {
 
 }
 
-void Tree::TreeTableMem(Node *root, vector<Encoding> encodingTable, string encoding) {
+void Tree::TreeTableMem(Node *root, vector<Encoding>& encodingTable, string encoding) {
     if(root->left == NULL && root->right ==NULL){
         encodingTable.push_back(Encoding(root->_info,encoding));
         return;
