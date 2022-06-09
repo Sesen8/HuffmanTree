@@ -6,6 +6,7 @@
 #include "Encoding.h"
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include <bits/stdc++.h>
 using std::cout;
 using std::endl;
@@ -21,6 +22,7 @@ Tree::~Tree() {
 }
 
 void Tree::DataToNode(const vector<Data>& freqTable, vector<Node*>& node) {
+
     for(Data j: freqTable){
         Node* newNode = new Node();
         newNode->_info = j.GetLetter();
@@ -34,8 +36,11 @@ void Tree::DataToNode(const vector<Data>& freqTable, vector<Node*>& node) {
 }
 
 bool SortTree(Node* node1, Node* node2){
-    if((node1->_freq == node2->_freq)){
-        return (node1->_info < node2->_info);
+    if(node1->_freq == node2->_freq){
+        if(node1->_info.size() == node2->_info.size()){
+            return (node1->_info > node2->_info);
+        }
+        return (node1->_info.size() < node2->_info.size());
     }
     else{
         return (node1->_freq > node2->_freq);
@@ -64,12 +69,17 @@ void Tree::TreeMaker(vector<Node*>& node) {
     }
     _root = node.back();
 
-//    for(Node* x: node){
-//        cout << x->_freq << " " << x->_info << endl;
-//
-//    }
+}
+bool SortEncode(Encoding val1, Encoding val2){
+    if(val1.GetBits().size() == val2.GetBits().size()){
+        if(val1.GetBits() == val2.GetBits()){
+            return (val1.GetChar() > val2.GetChar());
+        }
+        return (val1.GetBits() < val2.GetBits());
+    }
 
 
+    return val1.GetBits().size() < val2.GetBits().size();
 }
 
 void Tree::TreeTable(vector<Encoding> &encodingTable) {
@@ -80,6 +90,7 @@ void Tree::TreeTable(vector<Encoding> &encodingTable) {
 void Tree::TreeTableMem(Node *root, vector<Encoding>& encodingTable, string encoding) {
     if(root->left == NULL && root->right ==NULL){
         encodingTable.push_back(Encoding(root->_info,encoding));
+        sort(encodingTable.begin(),encodingTable.end(),SortEncode);
         return;
     }
     if(root->left != NULL){
@@ -88,6 +99,21 @@ void Tree::TreeTableMem(Node *root, vector<Encoding>& encodingTable, string enco
     if(root->right != NULL){
         TreeTableMem(root->right,encodingTable,encoding+"0");
     }
+}
+
+void Tree::SingleChar(vector<Encoding> &encodingTable, const char* c) {
+    string letter = c;
+
+    for(Encoding j : encodingTable){
+        if (j.GetChar() == letter) {
+            cout << j.GetBits() << endl;
+        }
+
+
+    }
+
+
+
 
 }
 

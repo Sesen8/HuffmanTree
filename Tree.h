@@ -29,6 +29,7 @@ public:
     void DataToNode(const vector<Data>& freqTable, vector<Node*>& node);
     void TreeMaker(vector<Node*>& node);
     void TreeTable(vector<Encoding>& encodingTable);
+    void SingleChar(vector<Encoding>& encodingTable, const char* c);
 
 
 
