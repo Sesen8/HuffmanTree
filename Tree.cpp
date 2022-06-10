@@ -18,6 +18,7 @@ Tree::Tree() {
 }
 
 Tree::~Tree() {
+    TreeClear(_root);
 
 }
 
@@ -112,8 +113,16 @@ void Tree::SingleChar(vector<Encoding> &encodingTable, const char* c) {
 
     }
 
+}
 
+void Tree::TreeClear(Node *node) {
+    if (node == nullptr){
+    return;
+    }
 
+    TreeClear(node->left);
+    TreeClear(node->right);
+    delete node;
 
 }
 

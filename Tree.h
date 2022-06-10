@@ -22,6 +22,7 @@ class Tree{
 
     Node* _root;
     void TreeTableMem(Node* root, vector<Encoding>& encodingTable, string encoding);
+    void TreeClear(Node* node);
 
 public:
     Tree();
