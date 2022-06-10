@@ -1,6 +1,10 @@
-//
-// Created by Sesen Yonas on 5/25/22.
-//
+/*
+ Filename: Data.h
+ Description: Includes the data memebers and methods for the data class
+ Author: Sesen Yonas
+ Date: 05/31/2022
+ Course: Data Structures II
+*/
 
 
 

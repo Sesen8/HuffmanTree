@@ -1,6 +1,10 @@
-//
-// Created by Sesen Yonas on 5/25/22.
-//
+/*
+ Filename: Data.cpp
+ Description: Includes the constructor getters and setters for the data functions
+ Author: Sesen Yonas
+ Date: 05/31/2022
+ Course: Data Structures II
+*/
 
 #include "Data.h"
 

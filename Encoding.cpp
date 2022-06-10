@@ -1,6 +1,10 @@
-//
-// Created by Sesen Yonas on 6/1/22.
-//
+/*
+ Filename: Encoding.cpp
+ Description: Includes the constructor getters and setters for encoding functions
+ Author: Sesen Yonas
+ Date: 05/31/2022
+ Course: Data Structures II
+*/
 
 #include "Encoding.h"
 
