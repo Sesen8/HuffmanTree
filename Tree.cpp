@@ -22,6 +22,8 @@ Tree::~Tree() {
 
 }
 
+
+//converts to node
 void Tree::DataToNode(const vector<Data>& freqTable, vector<Node*>& node) {
 
     for(Data j: freqTable){
@@ -36,6 +38,10 @@ void Tree::DataToNode(const vector<Data>& freqTable, vector<Node*>& node) {
 
 }
 
+
+
+
+//sorts the tree
 bool SortTree(Node* node1, Node* node2){
     if(node1->_freq == node2->_freq){
         if(node1->_info.size() == node2->_info.size()){
@@ -51,6 +57,8 @@ bool SortTree(Node* node1, Node* node2){
 
 }
 
+
+//constructs the tree
 void Tree::TreeMaker(vector<Node*>& node) {
 
     while(node.size() >1) {
@@ -71,6 +79,10 @@ void Tree::TreeMaker(vector<Node*>& node) {
     _root = node.back();
 
 }
+
+
+
+//sorting the codes vector
 bool SortEncode(Encoding val1, Encoding val2){
     if(val1.GetBits().size() == val2.GetBits().size()){
         if(val1.GetBits() == val2.GetBits()){
@@ -83,11 +95,21 @@ bool SortEncode(Encoding val1, Encoding val2){
     return val1.GetBits().size() < val2.GetBits().size();
 }
 
+
+
+//function to call tree transversal
 void Tree::TreeTable(vector<Encoding> &encodingTable) {
     TreeTableMem(_root,encodingTable,"");
 
 }
 
+
+
+
+
+
+
+//recursive for tree
 void Tree::TreeTableMem(Node *root, vector<Encoding>& encodingTable, string encoding) {
     if(root->left == NULL && root->right ==NULL){
         encodingTable.push_back(Encoding(root->_info,encoding));
@@ -102,6 +124,12 @@ void Tree::TreeTableMem(Node *root, vector<Encoding>& encodingTable, string enco
     }
 }
 
+
+
+
+
+
+//for getting the code for single char
 void Tree::SingleChar(vector<Encoding> &encodingTable, const char* c) {
     string letter = c;
 
@@ -115,6 +143,10 @@ void Tree::SingleChar(vector<Encoding> &encodingTable, const char* c) {
 
 }
 
+
+
+
+//clears the tree
 void Tree::TreeClear(Node *node) {
     if (node == nullptr){
     return;
